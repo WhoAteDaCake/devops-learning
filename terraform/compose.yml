@@ -1,0 +1,46 @@
+---
+##
+## DATABASES
+##
+elasticsearch:
+  databases:
+    nanowire:
+      scheme: https
+      ip: # IP address
+      internal_host: elasticsearch.nanowire.io
+      port: 9200
+      username: # HTTP basic auth username
+      password: # HTTP basic auth password
+      apiVersion: 5.6
+      indexNames:
+        pipeline: pipeline
+        group: group
+
+mongodb:
+  databases:
+    nanowire:
+      ip: # IP address
+      internal_host: mongodb.nanowire.io
+      port: 27017
+      username: # Mongo username
+      password: # Mongo password
+      ssl: true # Comment out this line to disable ssl
+      database: nanowire
+
+minio:
+  scheme: https
+  ip: # IP address
+  internal_host: minio.nanowire.io
+  region: us-east-1
+  port: 9000
+  bucket: nanowire
+  access_key: # Minio access key (Minimum 15 sharacters)
+  secret_key: # Minio secret (Minimum 15 sharacters)
+
+redis:
+  ip: # IP address
+  internal_host: redis.nanowire.io
+  port: 6379
+  database: "0"
+  password: # Redis password
+  ssl: true # Comment out this line to disable ssl
