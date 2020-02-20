@@ -13,6 +13,14 @@ resource "google_compute_instance" "vm_instance" {
   machine_type = var.machine_type
   tags         = ["web", "dev"]
 
+  connection {
+    type = "ssh"
+    user = var.ssh_user
+    host = google_compute_address.vm_static_ip.address
+    private_key = file("~/.ssh/id_rsa")
+    agent = true
+  }
+
   boot_disk {
     initialize_params {
       image = "ubuntu-1804-lts"
@@ -35,7 +43,7 @@ resource "google_compute_instance" "vm_instance" {
     ssh-keys = "${var.ssh_user}:${file(var.ssh_pub_key_file)}"
   }
 
-  metadata_startup_script = "ls /tmp > test.txt"
+  metadata_startup_script = "ls /tmp > tests.txt"
 
   provisioner "file" {
     source      = "../scripts/mount_device.sh"
@@ -46,25 +54,6 @@ resource "google_compute_instance" "vm_instance" {
     source      = "../scripts/docker.sh"
     destination = "/tmp/docker.sh"
   }
-
-#   provisioner "remote-exec" {
-#     inline = [
-#       "curl -fsSL https://get.docker.com -o get-docker.sh",
-#       "sudo sh get-docker.sh",
-#       <<EOF
-#       cat > docker.cfg <<- EOM
-#       {
-#         "data-root": "$MOUNT_PATH",
-#         "storage-driver": "overlay2"
-#       }
-# EOM
-# EOF
-# ,
-#     "sudo mv docker.cfg /etc/docker/daemon.json",
-#     "sudo systemctl restart docker",
-#     "sudo usermod -aG docker $USER"
-#     ]
-#   }
 
   # Make sure that old ssh key is removed 
   provisioner "local-exec" {
