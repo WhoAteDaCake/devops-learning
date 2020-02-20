@@ -1,0 +1,304 @@
+[{
+	"_id": "w-05b8ec00-b290-11e8-9020-b5080dde7dd9",
+	"type": "SINGLE_FILE",
+	"status": "enabled",
+	"positions": [
+		{
+			"plugin": "pl-c33464e0-d063-11e7-aa22-752400d11f5e",
+			"_id": "pos-adaa7011-3917-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-fadd83e0-0b5f-11e8-8cce-8d29d5f575d6",
+			"_id": "pos-adaa7010-3917-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-af152150-6d7c-11e8-872a-3ba0332e4037",
+			"_id": "pos-adaa4900-3917-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-07abc600-2851-11e8-a416-77bcc1f53107",
+			"_id": "pos-ada8c267-3917-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-b79e4780-d064-11e7-aa22-752400d11f5e",
+			"_id": "pos-ada8c266-3917-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-5e02a760-5535-11e8-b37b-cba6d2959d8d",
+			"_id": "pos-ada8c265-3917-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-3252cdf0-2e7c-11e8-897e-d30c23f2990a",
+			"_id": "pos-ada8c264-3917-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-1d87a210-e65b-11e7-b2b7-4d6a811c29e7",
+			"_id": "pos-ada8c263-3917-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-2cce4ee0-e65b-11e7-b2b7-4d6a811c29e7",
+			"_id": "pos-ada8c262-3917-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-1e054610-2cf2-11e8-bc63-1b514ce4a6ca",
+			"_id": "pos-ada8c260-3917-11e9-a29f-31fba902d8ed"
+		}
+	],
+	"title": "All plugins",
+	"summary": "All plugins in a single pipeline.",
+	"createdAt": {
+		"$date": "2018-09-07T11:20:27.593Z"
+	},
+	"updatedAt": {
+		"$date": "2019-02-25T16:09:07.205Z"
+	},
+	"__v": 0
+},
+{
+	"_id": "w-0abf4550-157e-11e8-99a9-5d4d8df78b92",
+	"updatedAt": {
+		"$date": "2018-09-28T09:31:02.801Z"
+	},
+	"createdAt": {
+		"$date": "2018-02-19T14:06:12.519Z"
+	},
+	"title": "Topic Modelling",
+	"summary": "Generate a topic model for a corpus of documents using LDA.",
+	"status": "enabled",
+	"type": "GROUP",
+	"__v": 0,
+	"positions": [
+		{
+			"plugin": "pl-f9be6020-005a-11e8-978c-55cf27e12462",
+			"_id": "pos-377b6f23-c301-11e8-bb10-b58da3c85bfa"
+		},
+		{
+			"plugin": "pl-bb961800-005b-11e8-978c-55cf27e12462",
+			"_id": "pos-377b6f22-c301-11e8-bb10-b58da3c85bfa"
+		},
+		{
+			"plugin": "pl-7971df90-005b-11e8-978c-55cf27e12462",
+			"_id": "pos-377b6f21-c301-11e8-bb10-b58da3c85bfa"
+		},
+		{
+			"plugin": "pl-7dbc34f0-4fa3-11e8-9daf-8bd28f809362",
+			"_id": "pos-377b6f20-c301-11e8-bb10-b58da3c85bfa"
+		}
+	]
+},
+{
+	"_id": "w-150292f2-cae2-11e8-bff1-c5db2e9776f8",
+	"type": "SINGLE_FILE",
+	"status": "enabled",
+	"positions": [
+		{
+			"plugin": "pl-c33464e0-d063-11e7-aa22-752400d11f5e",
+			"_id": "pos-4bacebc2-cae7-11e8-858d-8fcf4fb3ec5d"
+		},
+		{
+			"plugin": "pl-b79e4780-d064-11e7-aa22-752400d11f5e",
+			"_id": "pos-4bacebc1-cae7-11e8-858d-8fcf4fb3ec5d"
+		},
+		{
+			"plugin": "pl-1e054610-2cf2-11e8-bc63-1b514ce4a6ca",
+			"_id": "pos-4bacebc0-cae7-11e8-858d-8fcf4fb3ec5d"
+		}
+	],
+	"title": "Simple entity extractor",
+	"summary": "A workflow to extract text and then process the entities only. ",
+	"createdAt": {
+		"$date": "2018-10-08T10:08:19.874Z"
+	},
+	"updatedAt": {
+		"$date": "2018-10-08T10:45:39.067Z"
+	},
+	"__v": 0
+},
+{
+	"_id": "w-152eb7b0-6efb-11e8-8cf4-8f971cf14f33",
+	"type": "SINGLE_FILE",
+	"status": "enabled",
+	"title": "Natural language processing",
+	"summary": "Uses all stable Natural Language Processing plugins.\n\nExtracts text from files then extracts entities, classification, stats, keywords, acronyms sentiment, readability and n-grams and more (no similar documents, use graph NLP)\n",
+	"createdAt": {
+		"$date": "2018-06-13T11:15:30.604Z"
+	},
+	"updatedAt": {
+		"$date": "2019-02-25T16:13:46.222Z"
+	},
+	"__v": 0,
+	"positions": [
+		{
+			"plugin": "pl-c33464e0-d063-11e7-aa22-752400d11f5e",
+			"_id": "pos-53f738e7-3918-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-b79e4780-d064-11e7-aa22-752400d11f5e",
+			"_id": "pos-53f738e6-3918-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-2cce4ee0-e65b-11e7-b2b7-4d6a811c29e7",
+			"_id": "pos-53f738e5-3918-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-1d87a210-e65b-11e7-b2b7-4d6a811c29e7",
+			"_id": "pos-53f738e4-3918-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-3252cdf0-2e7c-11e8-897e-d30c23f2990a",
+			"_id": "pos-53f738e3-3918-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-af152150-6d7c-11e8-872a-3ba0332e4037",
+			"_id": "pos-53f738e2-3918-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-07abc600-2851-11e8-a416-77bcc1f53107",
+			"_id": "pos-53f738e1-3918-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-1e054610-2cf2-11e8-bc63-1b514ce4a6ca",
+			"_id": "pos-53f738e0-3918-11e9-a29f-31fba902d8ed"
+		}
+	]
+},
+{
+	"_id": "w-21bcadb0-bb19-11e8-9c7d-4f680f319b0b",
+	"type": "SINGLE_FILE",
+	"status": "enabled",
+	"positions": [
+		{
+			"plugin": "pl-c33464e0-d063-11e7-aa22-752400d11f5e",
+			"_id": "pos-78ce6b12-cae7-11e8-bff1-c5db2e9776f8"
+		},
+		{
+			"plugin": "pl-5e02a760-5535-11e8-b37b-cba6d2959d8d",
+			"_id": "pos-78ce6b11-cae7-11e8-bff1-c5db2e9776f8"
+		},
+		{
+			"plugin": "pl-1e054610-2cf2-11e8-bc63-1b514ce4a6ca",
+			"_id": "pos-78ce6b10-cae7-11e8-bff1-c5db2e9776f8"
+		}
+	],
+	"title": "Image classifier only v0.2",
+	"summary": "Classify images put through the system",
+	"createdAt": {
+		"$date": "2018-09-18T08:02:04.940Z"
+	},
+	"updatedAt": {
+		"$date": "2018-10-08T10:46:54.785Z"
+	},
+	"__v": 0
+},
+{
+	"_id": "w-4a159840-3f21-11e8-8b79-ebeb5c2dadcb",
+	"type": "GROUP",
+	"status": "enabled",
+	"title": "Group anomaly visualisation",
+	"summary": "Group workflow for converting a corpus of documents into a scatter plot with point clustering",
+	"createdAt": {
+		"$date": "2018-04-13T13:48:04.421Z"
+	},
+	"updatedAt": {
+		"$date": "2018-09-28T09:45:23.089Z"
+	},
+	"__v": 0,
+	"positions": [
+		{
+			"plugin": "pl-f9be6020-005a-11e8-978c-55cf27e12462",
+			"_id": "pos-3840f723-c303-11e8-bff1-c5db2e9776f8"
+		},
+		{
+			"plugin": "pl-0ce401a0-3f21-11e8-8b79-ebeb5c2dadcb",
+			"_id": "pos-3840f722-c303-11e8-bff1-c5db2e9776f8"
+		},
+		{
+			"plugin": "pl-7971df90-005b-11e8-978c-55cf27e12462",
+			"_id": "pos-3840f721-c303-11e8-bff1-c5db2e9776f8"
+		},
+		{
+			"plugin": "pl-7dbc34f0-4fa3-11e8-9daf-8bd28f809362",
+			"_id": "pos-3840f720-c303-11e8-bff1-c5db2e9776f8"
+		}
+	]
+},
+{
+	"_id": "w-4d6dea00-c302-11e8-bff1-c5db2e9776f8",
+	"type": "GROUP",
+	"status": "enabled",
+	"positions": [
+		{
+			"plugin": "pl-f9be6020-005a-11e8-978c-55cf27e12462",
+			"_id": "pos-d5c4c6b0-cae3-11e8-858d-8fcf4fb3ec5d"
+		},
+		{
+			"plugin": "pl-bb961800-005b-11e8-978c-55cf27e12462",
+			"_id": "pos-d5c49fa3-cae3-11e8-858d-8fcf4fb3ec5d"
+		},
+		{
+			"plugin": "pl-0ce401a0-3f21-11e8-8b79-ebeb5c2dadcb",
+			"_id": "pos-d5c49fa2-cae3-11e8-858d-8fcf4fb3ec5d"
+		},
+		{
+			"plugin": "pl-7971df90-005b-11e8-978c-55cf27e12462",
+			"_id": "pos-d5c49fa1-cae3-11e8-858d-8fcf4fb3ec5d"
+		},
+		{
+			"plugin": "pl-7dbc34f0-4fa3-11e8-9daf-8bd28f809362",
+			"_id": "pos-d5c49fa0-cae3-11e8-858d-8fcf4fb3ec5d"
+		}
+	],
+	"title": "All stable group plugins",
+	"summary": "Topic modelling and Anomaly visualisation",
+	"createdAt": {
+		"$date": "2018-09-28T09:38:49.123Z"
+	},
+	"updatedAt": {
+		"$date": "2018-10-08T10:20:52.762Z"
+	},
+	"__v": 0
+},
+{
+	"_id": "w-4e31bf30-631b-11e8-b49e-4de7718b4ad0",
+	"type": "SINGLE_FILE",
+	"status": "enabled",
+	"title": "Social media capture",
+	"summary": "Full Natural Language Processing and image for social media",
+	"createdAt": {
+		"$date": "2018-05-29T08:35:56.200Z"
+	},
+	"updatedAt": {
+		"$date": "2019-02-25T16:13:07.293Z"
+	},
+	"__v": 0,
+	"positions": [
+		{
+			"plugin": "pl-1b6b92e0-06a7-11e8-8adf-53da882875b8",
+			"_id": "pos-3cc347e6-3918-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-b79e4780-d064-11e7-aa22-752400d11f5e",
+			"_id": "pos-3cc347e5-3918-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-2cce4ee0-e65b-11e7-b2b7-4d6a811c29e7",
+			"_id": "pos-3cc347e4-3918-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-1d87a210-e65b-11e7-b2b7-4d6a811c29e7",
+			"_id": "pos-3cc347e3-3918-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-af152150-6d7c-11e8-872a-3ba0332e4037",
+			"_id": "pos-3cc347e2-3918-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-3252cdf0-2e7c-11e8-897e-d30c23f2990a",
+			"_id": "pos-3cc347e1-3918-11e9-a29f-31fba902d8ed"
+		},
+		{
+			"plugin": "pl-1e054610-2cf2-11e8-bc63-1b514ce4a6ca",
+			"_id": "pos-3cc347e0-3918-11e9-a29f-31fba902d8ed"
+		}
+	]
+}]

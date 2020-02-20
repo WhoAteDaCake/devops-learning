@@ -43,8 +43,6 @@ resource "google_compute_instance" "vm_instance" {
     ssh-keys = "${var.ssh_user}:${file(var.ssh_pub_key_file)}"
   }
 
-  metadata_startup_script = "ls /tmp > tests.txt"
-
   provisioner "file" {
     source      = "../scripts/mount_device.sh"
     destination = "/tmp/mount_device.sh"
@@ -53,6 +51,10 @@ resource "google_compute_instance" "vm_instance" {
   provisioner "file" {
     source      = "../scripts/docker.sh"
     destination = "/tmp/docker.sh"
+  }
+
+  provisioner "remote-exec" {
+    
   }
 
   # Make sure that old ssh key is removed 

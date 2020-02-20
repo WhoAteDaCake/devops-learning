@@ -1,0 +1,624 @@
+[{
+	"_id": "pl-07abc600-2851-11e8-a416-77bcc1f53107",
+	"updatedAt": {
+		"$date": "2018-08-23T12:34:41.581Z"
+	},
+	"createdAt": {
+		"$date": "2018-03-15T13:01:52.096Z"
+	},
+	"title": "MOD acronym detection",
+	"summary": "A plugin for finding MOD acronyms, definitions and abbreviations in a document",
+	"config": {
+		"memory": "100M",
+		"cpu": "10m",
+		"cmd": [
+			"python",
+			"main.py"
+		],
+		"outputs": [
+			"plugin"
+		],
+		"inputs": [
+			"source"
+		],
+		"types": [
+			"SINGLE_FILE"
+		],
+		"email": "stuart@spotlightdata.co.uk",
+		"image": "spotlightdata/hcc_worker_custom_term_finder:0.1.0",
+		"author": "Mitchell Murphy/Stuart Bowe",
+		"description": "Finds MOD acronyms in a document",
+		"name": "acronym-finder"
+	},
+	"status": "enabled",
+	"__v": 0
+},
+{
+	"_id": "pl-0ce401a0-3f21-11e8-8b79-ebeb5c2dadcb",
+	"status": "enabled",
+	"config": {
+		"name": "visual-anomalous-document-detector",
+		"description": "Makes it easier for the user to find anomolous documents within a corpus using t-SNE and DB-SCAN density clustering",
+		"image": "docker.spotlightdata.co.uk/plugins/worker_visual_anomolous_document_finding:dev",
+		"author": "Stuart Bowe",
+		"email": "stuart@spotlightdata.co.uk",
+		"types": [
+			"GROUP"
+		],
+		"inputs": [
+			"source"
+		],
+		"outputs": [
+			"plugin"
+		],
+		"cmd": [
+			"python",
+			"visual_anomolies_toolbox.py"
+		],
+		"cpu": "10m",
+		"memory": "100M"
+	},
+	"title": "Anomaly visualisation",
+	"summary": "A plugin for creating a visualisation of a corpus of documents in order to help with finding anomalous documents within a corpus",
+	"createdAt": {
+		"$date": "2018-04-13T13:46:21.757Z"
+	},
+	"updatedAt": {
+		"$date": "2018-08-23T12:37:28.889Z"
+	},
+	"__v": 0
+},
+{
+	"_id": "pl-1b6b92e0-06a7-11e8-8adf-53da882875b8",
+	"updatedAt": {
+		"$date": "2018-05-30T07:47:12.963Z"
+	},
+	"createdAt": {
+		"$date": "2018-01-31T16:52:22.417Z"
+	},
+	"title": "Extract Source Meta as JSON-LD",
+	"summary": "This plugin should be used in all pipelines where a JSON-LD is supplied in the source meta field of the NMO/task, this is true for all social media pipelines and API driven pipelines.",
+	"config": {
+		"types": [
+			"SINGLE_FILE"
+		],
+		"memory": "100M",
+		"cpu": "10m",
+		"cmd": [
+			"npm",
+			"start"
+		],
+		"outputs": [
+			"jsonld"
+		],
+		"inputs": [
+			"source"
+		],
+		"image": "docker.spotlightdata.co.uk/plugins/worker_source_meta_jsonld",
+		"description": "Returns the source meta",
+		"email": "will@spotlightdata.co.uk",
+		"author": "Will Evans",
+		"name": "extract-source-meta-as-jsonld"
+	},
+	"status": "enabled",
+	"__v": 0
+},
+{
+	"_id": "pl-1d87a210-e65b-11e7-b2b7-4d6a811c29e7",
+	"updatedAt": {
+		"$date": "2018-09-27T15:36:53.213Z"
+	},
+	"createdAt": {
+		"$date": "2017-12-21T14:27:46.993Z"
+	},
+	"title": "Readability ",
+	"summary": "Calculates the readability of a piece of text, using the Flesch-Kincaid Reading Level Ease method.\n\nLanguage : Node\nNanowire version : v0.2 \nPlugin version : (dev-16)",
+	"config": {
+		"memory": "100M",
+		"cpu": "10m",
+		"env": {
+			"FIELDS": "text,headline,video.caption"
+		},
+		"cmd": [
+			"npm",
+			"start"
+		],
+		"outputs": [
+			"jsonld"
+		],
+		"inputs": [
+			"source"
+		],
+		"image": "docker.spotlightdata.co.uk/plugins/worker_node_extract:dev",
+		"description": "Extracts text and metadata using Apache Tika and puts in JSON-LD.",
+		"email": "will@spotlightdata.co.uk",
+		"author": "Will Evans",
+		"name": "node-readability",
+		"types": [
+			"SINGLE_FILE"
+		]
+	},
+	"status": "enabled",
+	"__v": 0
+},
+{
+	"_id": "pl-1e054610-2cf2-11e8-bc63-1b514ce4a6ca",
+	"status": "enabled",
+	"config": {
+		"name": "minio-cleaner",
+		"author": "Will Evans",
+		"email": "will@spotlightdata.co.uk",
+		"description": "Storage worker",
+		"image": "docker.spotlightdata.co.uk/plugins/worker_minio_cleaner",
+		"inputs": [
+			"source"
+		],
+		"outputs": [
+			"jsonld"
+		],
+		"cmd": [
+			"npm",
+			"start"
+		],
+		"env": {
+			"DEBUG": "1"
+		},
+		"cpu": "10m",
+		"memory": "100M",
+		"types": [
+			"SINGLE_FILE"
+		]
+	},
+	"title": "Minio Cleaner",
+	"summary": "Removes the file from Minio.\n\nShould be used at the end of a single file pipeline if the original file is unwanted.",
+	"createdAt": {
+		"$date": "2018-03-21T10:25:03.240Z"
+	},
+	"updatedAt": {
+		"$date": "2018-05-30T07:45:17.454Z"
+	},
+	"__v": 0
+},
+{
+	"_id": "pl-2cce4ee0-e65b-11e7-b2b7-4d6a811c29e7",
+	"updatedAt": {
+		"$date": "2018-05-30T07:49:37.699Z"
+	},
+	"createdAt": {
+		"$date": "2017-12-21T14:28:12.623Z"
+	},
+	"config": {
+		"memory": "100M",
+		"cpu": "10m",
+		"env": {
+			"FIELDS": "text,headline,video.caption"
+		},
+		"cmd": [
+			"npm",
+			"start"
+		],
+		"outputs": [
+			"jsonld"
+		],
+		"inputs": [
+			"source"
+		],
+		"image": "docker.spotlightdata.co.uk/plugins/worker_node_extract",
+		"description": "Extracts text and metadata using Apache Tika and puts in JSON-LD.",
+		"email": "will@spotlightdata.co.uk",
+		"author": "Will Evans",
+		"name": "node-sentiment",
+		"types": [
+			"SINGLE_FILE"
+		]
+	},
+	"title": "Sentiment",
+	"summary": "Calculates the sentiment of a piece of text using the  AFINN-165 wordlist and Emoji Sentiment Ranking.",
+	"status": "enabled",
+	"__v": 0
+},
+{
+	"_id": "pl-3252cdf0-2e7c-11e8-897e-d30c23f2990a",
+	"status": "enabled",
+	"config": {
+		"name": "document-classification",
+		"author": "Will Evans",
+		"email": "will@spotlightdata.co.uk",
+		"description": "Returns the possible classification of the document",
+		"image": "docker.spotlightdata.co.uk/plugins/worker_source_meta_jsonld",
+		"inputs": [
+			"source"
+		],
+		"outputs": [
+			"jsonld"
+		],
+		"cmd": [
+			"npm",
+			"start"
+		],
+		"cpu": "10m",
+		"memory": "100M",
+		"types": [
+			"SINGLE_FILE"
+		]
+	},
+	"title": "Document Classification",
+	"summary": "Extracts a possible document classification by looking at the first few words in a file.",
+	"createdAt": {
+		"$date": "2018-03-23T09:25:58.995Z"
+	},
+	"updatedAt": {
+		"$date": "2018-05-30T07:44:46.160Z"
+	},
+	"__v": 0
+},
+{
+	"_id": "pl-5e02a760-5535-11e8-b37b-cba6d2959d8d",
+	"status": "enabled",
+	"config": {
+		"name": "embeded-image-classify",
+		"description": "Attempts to classify images embeded in documents",
+		"image": "docker.spotlightdata.co.uk/plugins/worker_classify_embeded_images:dev",
+		"author": "Stuart Bowe",
+		"email": "stuart@spotlightdata.co.uk",
+		"types": [
+			"SINGLE_FILE"
+		],
+		"inputs": [
+			"source"
+		],
+		"outputs": [
+			"plugin"
+		],
+		"cmd": [
+			"python",
+			"classify_embedded_images_main.py"
+		],
+		"env": {},
+		"cpu": "10m",
+		"memory": "100M"
+	},
+	"title": "Image classifier",
+	"summary": "Classify images embedded in documents/images using googles inception v3 network",
+	"createdAt": {
+		"$date": "2018-05-11T16:07:13.368Z"
+	},
+	"updatedAt": {
+		"$date": "2018-09-10T13:51:14.061Z"
+	},
+	"__v": 0
+},
+{
+	"_id": "pl-7971df90-005b-11e8-978c-55cf27e12462",
+	"updatedAt": {
+		"$date": "2018-01-30T15:19:49.813Z"
+	},
+	"createdAt": {
+		"$date": "2018-01-23T16:35:51.433Z"
+	},
+	"title": "Group Store",
+	"summary": "Stores the results of group analysis.",
+	"config": {
+		"memory": "100M",
+		"cpu": "10m",
+		"env": {
+			"DEBUG": "1"
+		},
+		"cmd": [
+			"npm",
+			"start"
+		],
+		"outputs": [
+			"jsonld"
+		],
+		"inputs": [
+			"source"
+		],
+		"image": "docker.spotlightdata.co.uk/plugins/worker_node_store",
+		"description": "Storage worker",
+		"email": "will@spotlightdata.co.uk",
+		"author": "Will Evans",
+		"name": "group-store",
+		"types": [
+			"GROUP"
+		]
+	},
+	"status": "enabled",
+	"__v": 0
+},
+{
+	"_id": "pl-7dbc34f0-4fa3-11e8-9daf-8bd28f809362",
+	"status": "enabled",
+	"config": {
+		"name": "delete-group-cache",
+		"author": "Will Evans",
+		"email": "will@spotlightdata.co.uk",
+		"description": "Deletes a group cache",
+		"image": "docker.spotlightdata.co.uk/plugins/delete_group_cache",
+		"inputs": [
+			"source"
+		],
+		"outputs": [
+			"jsonld"
+		],
+		"cmd": [
+			"npm",
+			"start"
+		],
+		"env": {
+			"DEBUG": "1",
+			"IGNORE_CACHE": "1"
+		},
+		"cpu": "10m",
+		"memory": "100M",
+		"types": [
+			"GROUP"
+		]
+	},
+	"title": "Delete Group Cache",
+	"summary": "Deletes the group cache from Elasticache.\n\nThis plugin should always be ran at the end of group workflows.",
+	"createdAt": {
+		"$date": "2018-05-04T14:00:24.258Z"
+	},
+	"updatedAt": {
+		"$date": "2018-05-30T07:44:16.369Z"
+	},
+	"__v": 0
+},
+{
+	"_id": "pl-af152150-6d7c-11e8-872a-3ba0332e4037",
+	"status": "enabled",
+	"config": {
+		"name": "combined-python-textacy",
+		"description": "Combination of all previous python textacy plugins.",
+		"image": "docker.spotlightdata.co.uk/plugins/worker_python_combined_textacy:dev",
+		"author": "Stuart Bowe",
+		"email": "stuart@spotlightdata.co.uk",
+		"types": [
+			"SINGLE_FILE"
+		],
+		"inputs": [
+			"source"
+		],
+		"outputs": [
+			"plugin"
+		],
+		"cmd": [
+			"python3",
+			"combined_textacy_main.py"
+		],
+		"cpu": "10m",
+		"memory": "100M"
+	},
+	"title": "Core NLP tools",
+	"summary": "Combined keywords, stats, n-grams, language detection and document summarisation plugin",
+	"createdAt": {
+		"$date": "2018-06-11T13:38:11.558Z"
+	},
+	"updatedAt": {
+		"$date": "2018-08-23T12:35:55.175Z"
+	},
+	"__v": 0
+},
+{
+	"_id": "pl-b1ab5760-8116-11e8-8bb2-152016f15b66",
+	"status": "enabled",
+	"config": {
+		"name": "extract-as-jsonld",
+		"author": "Will Evans",
+		"email": "will@spotlightdata.co.uk",
+		"description": "Returns the source meta",
+		"image": "docker.spotlightdata.co.uk/plugins/worker_source_meta_jsonld",
+		"inputs": [
+			"source"
+		],
+		"outputs": [
+			"jsonld"
+		],
+		"cmd": [
+			"npm",
+			"start"
+		],
+		"cpu": "10m",
+		"memory": "100M",
+		"types": [
+			"SINGLE_FILE"
+		]
+	},
+	"title": "Extract As JsonLD",
+	"summary": "Extract As JsonLD",
+	"createdAt": {
+		"$date": "2018-07-06T12:18:30.501Z"
+	},
+	"updatedAt": {
+		"$date": "2018-07-06T12:18:30.501Z"
+	},
+	"__v": 0
+},
+{
+	"_id": "pl-b79e4780-d064-11e7-aa22-752400d11f5e",
+	"updatedAt": {
+		"$date": "2018-05-30T07:50:52.881Z"
+	},
+	"createdAt": {
+		"$date": "2017-11-23T15:41:05.401Z"
+	},
+	"title": "Entity Extraction",
+	"summary": "Extracts the entities from raw text in a JSON-LD using the MITIE entity extractor.",
+	"status": "enabled",
+	"__v": 0,
+	"config": {
+		"name": "node-entity-extractor",
+		"author": "Will Evans",
+		"email": "will@spotlightdata.co.uk",
+		"description": "Returns the entities on jsonld.text",
+		"image": "docker.spotlightdata.co.uk/plugins/worker_node_topic_modelling",
+		"inputs": [
+			"source"
+		],
+		"outputs": [
+			"jsonld"
+		],
+		"cmd": [
+			"npm",
+			"start"
+		],
+		"env": {},
+		"cpu": "10m",
+		"memory": "100M",
+		"types": [
+			"SINGLE_FILE"
+		]
+	}
+},
+{
+	"_id": "pl-bb961800-005b-11e8-978c-55cf27e12462",
+	"updatedAt": {
+		"$date": "2018-05-30T07:47:34.903Z"
+	},
+	"createdAt": {
+		"$date": "2018-01-23T16:37:42.400Z"
+	},
+	"title": "Topic Modelling",
+	"summary": "Runs LDA topic modelling on a group of tasks.",
+	"config": {
+		"memory": "100M",
+		"cpu": "10m",
+		"env": {
+			"DEBUG": "true"
+		},
+		"cmd": [
+			"npm",
+			"start"
+		],
+		"outputs": [
+			"jsonld"
+		],
+		"inputs": [
+			"source"
+		],
+		"image": "docker.spotlightdata.co.uk/plugins/worker_node_topic_modelling",
+		"email": "will@spotlightdata.co.uk",
+		"author": "Will Evans",
+		"description": "Returns the topics on jsonld.text",
+		"name": "node-topic-modelling",
+		"types": [
+			"GROUP",
+			"SINGLE_FILE"
+		]
+	},
+	"status": "enabled",
+	"__v": 0
+},
+{
+	"_id": "pl-c33464e0-d063-11e7-aa22-752400d11f5e",
+	"updatedAt": {
+		"$date": "2018-05-30T07:50:25.238Z"
+	},
+	"createdAt": {
+		"$date": "2017-11-23T15:34:15.347Z"
+	},
+	"title": "Extract-Tika",
+	"summary": "Extracts plain text and metadata from a file using Apache Tika, the result is a JSON-LD.",
+	"status": "enabled",
+	"__v": 0,
+	"config": {
+		"name": "node-extract",
+		"author": "Will Evans",
+		"email": "will@spotlightdata.co.uk",
+		"description": "Extracts text and metadata using Apache Tika and puts in JSON-LD.",
+		"image": "docker.spotlightdata.co.uk/plugins/worker_node_extract",
+		"inputs": [
+			"source"
+		],
+		"outputs": [
+			"jsonld"
+		],
+		"cmd": [
+			"npm",
+			"start"
+		],
+		"env": {
+			"DEBUG": "0"
+		},
+		"cpu": "10m",
+		"memory": "100M",
+		"types": [
+			"SINGLE_FILE"
+		]
+	}
+},
+{
+	"_id": "pl-f9be6020-005a-11e8-978c-55cf27e12462",
+	"updatedAt": {
+		"$date": "2018-05-30T07:48:05.646Z"
+	},
+	"createdAt": {
+		"$date": "2018-01-23T16:32:17.189Z"
+	},
+	"title": "Create Group Cache",
+	"summary": "Creates the cache from Elasticsearch to analyse as a group.\n\nThis plugin should be used at the start of all group pipelines.",
+	"config": {
+		"memory": "100M",
+		"cpu": "10m",
+		"env": {
+			"ELASTICACHE_BASE_URI": "http://elasticache.default",
+			"FIELDS": "text"
+		},
+		"cmd": [
+			"npm",
+			"start"
+		],
+		"outputs": [
+			"jsonld"
+		],
+		"inputs": [
+			"source"
+		],
+		"image": "docker.spotlightdata.co.uk/plugins/worker_node_extract",
+		"description": "Ensures the cache is ready in Elasticache and adds the URL to the NMO.",
+		"email": "will@spotlightdata.co.uk",
+		"author": "Will Evans",
+		"name": "create-group-cache",
+		"types": [
+			"GROUP"
+		]
+	},
+	"status": "enabled",
+	"__v": 0
+},
+{
+	"_id": "pl-fadd83e0-0b5f-11e8-8cce-8d29d5f575d6",
+	"updatedAt": {
+		"$date": "2018-08-23T12:38:07.096Z"
+	},
+	"createdAt": {
+		"$date": "2018-02-06T17:05:49.342Z"
+	},
+	"title": "Sentence winnowing",
+	"summary": "This plugin finds hashes of sentences to be used in document matching",
+	"config": {
+		"memory": "100M",
+		"cpu": "10m",
+		"cmd": [
+			"python3",
+			"sentence_winnow_main.py"
+		],
+		"outputs": [
+			"plugin"
+		],
+		"inputs": [
+			"source"
+		],
+		"types": [
+			"SINGLE_FILE"
+		],
+		"email": "stuart@spotlightdata.co.uk",
+		"author": "Stuart Bowe",
+		"image": "docker.spotlightdata.co.uk/plugins/hcc_sentence_winnowing:dev",
+		"description": "Winnow a document based on sentence tokenisation to find matching sentences across a corpus.",
+		"name": "sentence-winnowing"
+	},
+	"status": "enabled",
+	"__v": 0
+}]
