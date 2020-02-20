@@ -35,29 +35,39 @@ resource "google_compute_instance" "vm_instance" {
     ssh-keys = "${var.ssh_user}:${file(var.ssh_pub_key_file)}"
   }
 
-  metadata_startup_script = <<SCRIPT
-    DEVICE_ID=/disks/by-id/google-${google_compute_disk.vm_disk.name}
-    MOUNT_PATH=/datadrive
-    sudo mkfs.ext4 -m 0 -F -E lazy_itable_init=0,lazy_journal_init=0,discard $DEVICE_ID
-    sudo mkdir -p $MOUNT_PATH
-    sudo mount -o discard,defaults $DEVICE_ID $MOUNT_PATH
-    sudo chmod a+w $MOUNT_PATH
+  metadata_startup_script = "ls /tmp > test.txt"
 
-    # Docker
-    curl -fsSL https://get.docker.com -o get-docker.sh
-    sudo sh get-docker.sh
+  provisioner "file" {
+    source      = "../scripts/mount_device.sh"
+    destination = "/tmp/mount_device.sh"
+  }
 
-    # Compose
-    sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    sudo chmod +x /usr/local/bin/docker-compose
+  provisioner "file" {
+    source      = "../scripts/docker.sh"
+    destination = "/tmp/docker.sh"
+  }
 
-    touch /etc/docker/daemon.json
-    sudo cat > /etc/docker/daemon.json <<- EOM
-      {
-        "data-root": "$MOUNT_PATH",
-        "storage-driver": "overlay2"
-      }
-EOM
-     sudo systemctl restart docker
-  SCRIPT
+#   provisioner "remote-exec" {
+#     inline = [
+#       "curl -fsSL https://get.docker.com -o get-docker.sh",
+#       "sudo sh get-docker.sh",
+#       <<EOF
+#       cat > docker.cfg <<- EOM
+#       {
+#         "data-root": "$MOUNT_PATH",
+#         "storage-driver": "overlay2"
+#       }
+# EOM
+# EOF
+# ,
+#     "sudo mv docker.cfg /etc/docker/daemon.json",
+#     "sudo systemctl restart docker",
+#     "sudo usermod -aG docker $USER"
+#     ]
+#   }
+
+  # Make sure that old ssh key is removed 
+  provisioner "local-exec" {
+    command = "ssh-keygen -f '/home/augustinas/.ssh/known_hosts' -R '${google_compute_address.vm_static_ip.address}'"
+  }
 }

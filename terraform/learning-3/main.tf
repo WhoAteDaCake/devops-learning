@@ -40,7 +40,7 @@ resource "google_compute_firewall" "network" {
 
   allow {
     protocol = "tcp"
-    ports    = [22,80, 2376]
+    ports    = [22, 80]
   }
 
   source_ranges = var.cidrs
