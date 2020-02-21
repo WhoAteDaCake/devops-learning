@@ -54,8 +54,15 @@ resource "google_compute_instance" "vm_instance" {
   }
 
   provisioner "remote-exec" {
-    
+    inline = [
+      "MOUNT_PATH=/datadrive DEVICE_ID=${google_compute_disk.vm_disk.name} bash /tmp/mount_device.sh",
+      "MOUNT_PATH=/datadrive bash /tmp/docker.sh"
+    ]
   }
+}
+
+resource "null_resource" "clear_keys" {
+  depends_on = [google_compute_disk.vm_disk]
 
   # Make sure that old ssh key is removed 
   provisioner "local-exec" {
