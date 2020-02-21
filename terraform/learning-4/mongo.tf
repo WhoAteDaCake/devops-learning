@@ -2,6 +2,10 @@ module "mongdb_user" {
   source = "../modules/user_gen"
 }
 
+resource "docker_volume" "mongodb" {
+  name = "minio_volume"
+}
+
 resource "docker_image" "mongodb" {
   name = "bitnami/mongodb:4.1.4-debian-9"
 }
@@ -25,5 +29,10 @@ resource "docker_container" "mongodb" {
   ports {
     internal = "27017"
     external = "27017"
+  }
+
+  volumes {
+    volume_name = docker_volume.mongodb.name
+    container_path = "/bitnami"
   }
 }

@@ -26,3 +26,11 @@ output "elasticsearch" {
 
   description = "Elasticsearch database details"
 }
+
+output "redis" {
+  value = {
+    "REDIS_PASSWORD" = module.redis_user.password
+  }
+
+  description = "Redis database details"
+}
