@@ -53,10 +53,16 @@ resource "google_compute_instance" "vm_instance" {
     destination = "/tmp/docker.sh"
   }
 
+  provisioner "file" {
+    source      = "../scripts/os_config.sh"
+    destination = "/tmp/os_config.sh"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "MOUNT_PATH=/datadrive DEVICE_ID=${google_compute_disk.vm_disk.name} bash /tmp/mount_device.sh",
-      "MOUNT_PATH=/datadrive bash /tmp/docker.sh"
+      "MOUNT_PATH=/datadrive bash /tmp/docker.sh",
+      "bash /tmp/os_config.sh"
     ]
   }
 }
