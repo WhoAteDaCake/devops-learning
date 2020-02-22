@@ -24,3 +24,10 @@ resource "google_project_service" "gps_st" {
   disable_on_destroy = false
   depends_on = [google_project_service.gps_cm]
 }
+
+resource "google_project_service" "dns" {
+  project = var.project
+  service = "dns.googleapis.com"
+  disable_on_destroy = false
+  depends_on = [google_project_service.gps_cm]
+}
