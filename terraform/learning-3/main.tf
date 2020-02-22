@@ -10,9 +10,9 @@ provider "google" {
   zone    = var.zone
   project = var.project
 
-  batching {
-    enable_batching = false   
-  }
+  # batching {
+  #   enable_batching = false   
+  # }
 }
 
 module "project_services" {
