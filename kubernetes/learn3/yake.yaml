@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yake
+  labels:
+    app: yake
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yake
+  template:
+    metadata:
+      labels:
+        app: yake
+    spec:
+      containers: 
+        - name: yake
+          image: liaad/yake-server:latest
+          ports:
+            - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: yake
+  labels:
+    app: yake
+spec:
+  ports:
+    - port: 80
+      targetPort: 5000
+  selector:
+    app: yake
+  type: LoadBalancer
