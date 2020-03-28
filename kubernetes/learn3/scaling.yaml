@@ -1,0 +1,34 @@
+apiVersion: keda.k8s.io/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: yake-scaledobject-postgresql-auth
+  namespace: default
+spec:
+  secretTargetRef:
+  - parameter: connection
+    name: secrets
+    key: postgres.url
+---
+apiVersion: keda.k8s.io/v1alpha1
+kind: ScaledObject
+metadata:
+  name: yake-scaledobject
+  namespace: default
+  labels:
+    deploymentName: yake
+spec:
+  # Required Name of the deployment we want to scale.
+  scaleTargetRef:
+    deploymentName: yake
+  minReplicaCount: 1   # Optional Default 0
+  maxReplicaCount: 6  # Optional Default 100
+  pollingInterval: 5   # Optional. Default: 30 seconds
+  cooldownPeriod: 30   # Optional. Default: 300 seconds
+  triggers:
+    - type: postgresql
+      authenticationRef:
+        name: yake-scaledobject-postgresql-auth
+      metadata:
+        sslmode: disable
+        query: "select count(*) from queueu"
+        targetQueryValue: "100"
